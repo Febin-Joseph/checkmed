@@ -7,13 +7,13 @@ const Hero = () => {
   return (
     <div className="flex justify-center items-center bg-gray-100 py-8 md:py-16 px-8 md:px-4 md:h-[740px] mt-20 lg:mt-24">
       <div
-        className="flex flex-col md:flex-row items-center max-w-7xl bg-white rounded-[20px] md:rounded-[30px] p-6 sm:p-8 md:p-12 mx-4 sm:mx-8 md:mx-0"
+        className="flex flex-col md:flex-row items-center max-w-7xl bg-white rounded-[20px] md:rounded-[30px] p-6 sm:p-8 md:p-12 mx-0 md:mx-2 lg:mx-0"
         style={{
           boxShadow:
             "inset 6px 0px 12px rgba(0, 0, 0, 0.2), inset 0px 6px 12px rgba(0, 0, 0, 0.2)"
         }}
       >
-        <div className="w-full md:w-1/2 text-center md:text-left">
+        <div className="w-full md:w-1/2 text-center md:text-left pt-5 md:pt-0">
           <h3 className="text-base sm:text-lg font-bold text-gray-600">
             Wellness Solutions That Put Your Employees First
           </h3>

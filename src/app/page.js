@@ -9,14 +9,18 @@ import TeamSlider from "./section/TeamSlider";
 
 export default function Home() {
   return (
-    <div className="font-nunito ">
-      <Nav />
-      <Hero />
-      <Social />
-      <TeamSlider/>
+    <div className="font-nunito">
+      <span className="overflow-hidden">
+        <Nav />
+        <Hero />
+        <Social />
+        <TeamSlider />
+      </span>
       <Gallery />
-      <HealthCTA />
-      <Footer />
+      <span className="overflow-hidden">
+        <HealthCTA />
+        <Footer />
+      </span>
     </div>
   );
 }

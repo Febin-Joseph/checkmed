@@ -22,7 +22,7 @@ const Gallery = () => {
 
   return (
     <div
-      className={`min-h-60 ${isMobile ? 'pb-20' : 'min-h-[120vh]'} bg-gradient-to-b from-[#17A4AD] to-[#41BFAA] p-4 md:p-6 lg:p-10 relative`}
+      className={`min-h-80 ${isMobile ? 'pb-20' : 'min-h-[120vh]'} bg-gradient-to-b from-[#17A4AD] to-[#41BFAA] p-4 md:p-6 lg:p-10 relative`}
     >
       <div className="w-full max-w-6xl mx-auto">
         <div className="lg:hidden space-y-2">

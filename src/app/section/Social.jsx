@@ -15,7 +15,7 @@ const Social = () => {
         >
           {[
             { src: "/yesbank.svg", alt: "Yes Bank", width: "w-28 sm:w-28 lg:w-32" },
-            { src: "/vi.svg", alt: "VI", width: "w-28 sm:w-28 lg:w-32" },
+            { src: "/vi.svg", alt: "VI", width: "w-10 sm:w-10 lg:w-18" },
             { src: "/icici.svg", alt: "ICICI Lombard", width: "w-24 sm:w-28 lg:w-32" },
             { src: "/care.svg", alt: "Care Health", width: "w-24 sm:w-28 lg:w-32" },
             { src: "/liberty.svg", alt: "Liberty Mutual", width: "w-24 sm:w-28 lg:w-32" },
