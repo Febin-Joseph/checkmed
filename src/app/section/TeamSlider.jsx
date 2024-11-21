@@ -44,8 +44,8 @@ const TeamSlider = () => {
               <div className="flex justify-center mb-4">
                 <Image src={slide.image} alt={slide.title} className="h-25 w-25" width={250} height={250} />
               </div>
-              <div className="bg-gradient-to-r from-[#41BFAA] to-[#17A4AD] p-6 h-[220px] xl:h-[160px]" style={{ boxShadow: "inset 6px 0px 12px rgba(0, 0, 0, 0.2), inset 0px 6px 12px rgba(0, 0, 0, 0.2)" }}>
-                <h3 className="text-xs lg:text-xs font-bold text-white mb-2">{slide.title}</h3>
+              <div className="bg-gradient-to-r from-[#41BFAA] to-[#17A4AD] p-6 h-[220px] md:h-[260px] xl:h-[160px]" style={{ boxShadow: "inset 6px 0px 12px rgba(0, 0, 0, 0.2), inset 0px 6px 12px rgba(0, 0, 0, 0.2)" }}>
+                <h3 className="text-xl font-extrabold text-white mb-2">{slide.title}</h3>
                 <p className="text-white">{slide.description}</p>
               </div>
             </div>
@@ -57,7 +57,7 @@ const TeamSlider = () => {
             {slides.map((slide, index) => (
               <div key={index} className="min-w-full p-4 flex flex-col items-center bg-white shadow-lg rounded-lg">
                 <Image src={slide.image} alt={slide.title} className="h-40 w-40 mb-4" width={80} height={80} />
-                <div className="bg-teal-500 p-6 h-[200px] overflow-hidden">
+                <div className="bg-teal-500 p-6 py-10 overflow-hidden">
                   <h3 className="text-xl font-bold text-white mb-2 text-center break-words">{slide.title}</h3>
                   <p className="text-white text-center text-sm md:xl break-words overflow-hidden">{slide.description}</p>
                 </div>
