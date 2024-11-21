@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FaLinkedinIn, FaFacebookF, FaTwitter } from "react-icons/fa";
 
 const Footer = () => (
-  <footer className="bg-blue-50 py-10 px-5">
+  <footer className="bg-blue-50 py-10 px-5 shadow-[inset_0px_4px_6px_-1px_rgba(0,0,0,0.4)]">
     <div className="bg-white rounded-3xl p-8 max-w-7xl mx-auto shadow-[inset_6px_0px_12px_rgba(0,0,0,0.2),_inset_0px_6px_12px_rgba(0,0,0,0.2)]">
       <div className="flex flex-col lg:flex-row justify-between items-center md:items-start gap-8 max-w-6xl mx-auto">
         <Image

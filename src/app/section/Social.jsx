@@ -5,8 +5,10 @@ import React from 'react';
 const Social = () => {
   return (
     <div className="relative">
-     
-      <div className="flex justify-center items-center min-h-40 bg-gradient-to-r from-[#17A4AD] to-[#41BFAA] py-8 px-4 sm:px-6">
+      <div className="flex justify-center items-center min-h-40 bg-gradient-to-r from-[#17A4AD] to-[#41BFAA] py-8 px-4 sm:px-6"
+      style={{
+        boxShadow: 'inset 0px 6px 12px -4px rgba(0, 0, 0, 0.6)'
+      }}>
         <div
           className="flex flex-wrap justify-center items-center w-full max-w-6xl p-4 bg-teal-100 rounded-lg md:rounded-full shadow-lg space-x-6"
           style={{

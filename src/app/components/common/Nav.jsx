@@ -41,7 +41,7 @@ const Nav = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 
         ${showNavbar ? 'translate-y-0' : '-translate-y-full'
-        } flex items-center justify-between p-1 bg-white border-gray-300`}
+        } flex items-center justify-between p-1 bg-white border-gray-300 shadow-md border-b`}
     >
       <div className="flex items-center pl-4">
         <Image

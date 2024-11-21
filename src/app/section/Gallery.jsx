@@ -23,6 +23,9 @@ const Gallery = () => {
   return (
     <div
       className={`min-h-80 ${isMobile ? 'pb-20' : 'min-h-[120vh]'} bg-gradient-to-b from-[#17A4AD] to-[#41BFAA] p-4 md:p-6 lg:p-10 relative`}
+      style={{
+        boxShadow: 'inset 0px 6px 12px -4px rgba(0, 0, 0, 0.6), inset 0px -6px 12px -4px rgba(0, 0, 0, 0.6)' // Bold blue inner shadow
+      }}
     >
       <div className="w-full max-w-6xl mx-auto">
         <div className="lg:hidden space-y-2">
