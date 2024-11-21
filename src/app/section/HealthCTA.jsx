@@ -4,7 +4,7 @@ import Button from "../components/common/Button";
 
 const HealthCTA = () => (
   <div className="relative">
-    <div className="bg-white mx-auto mt-10 p-6 sm:p-8 rounded-lg text-center max-w-full mb-5">
+    <div className="bg-white mx-auto mt-6 p-6 sm:p-8 rounded-lg text-center max-w-full mb-5">
       <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 leading-snug sm:leading-tight">
         YOU DON&apos;T HAVE TO BE A WELLNESS EXPERT<br />
         TO TRANSFORM EMPLOYEE<br />
