@@ -1,9 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
 const TeamSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const accumulatedDelta = useRef(0); 
+  const wheelTimeout = useRef(null); 
 
   const slides = [
     {
@@ -30,8 +32,58 @@ const TeamSlider = () => {
     setCurrentSlide(index);
   };
 
+  const handleWheel = (e) => {
+    
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      e.preventDefault();
+    }
+
+   
+    accumulatedDelta.current += e.deltaX;
+
+    
+    if (wheelTimeout.current) {
+      clearTimeout(wheelTimeout.current);
+    }
+
+    
+    const threshold = 50; 
+
+    if (Math.abs(accumulatedDelta.current) > threshold) {
+      const direction = accumulatedDelta.current > 0 ? 1 : -1;
+      const newIndex = boundIndex(currentSlide + direction);
+
+      if (newIndex !== currentSlide) {
+        setCurrentSlide(newIndex);
+        accumulatedDelta.current = 0; 
+      }
+    }
+
+   
+    wheelTimeout.current = setTimeout(() => {
+      accumulatedDelta.current = 0;
+    }, 150);
+  };
+
+  const boundIndex = (index) => {
+    return Math.max(0, Math.min(slides.length - 1, index));
+  };
+
+  useEffect(() => {
+    const container = document.querySelector(".team-slider-container");
+    if (container) {
+      container.addEventListener("wheel", handleWheel, { passive: false });
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener("wheel", handleWheel);
+      }
+    };
+  }, [currentSlide]);
+
   return (
-    <div className="flex flex-col items-center p-6 md:p-10 bg-gray-50 min-h-fit w-full">
+    <div className="team-slider-container flex flex-col items-center p-6 md:p-10 bg-gray-50 min-h-fit w-full">
       <div className="flex flex-col items-center p-6 md:p-10 bg-white max-w-full md:max-w-7xl rounded-[30px] mt-5 md:mt-10 mb-10" style={{ boxShadow: "inset 6px 0px 12px rgba(0, 0, 0, 0.2), inset 0px 6px 12px rgba(0, 0, 0, 0.2)" }}>
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center">How We Help</h2>
         <p className="text-center text-gray-700 max-w-2xl text-md md:text-lg p-6">
