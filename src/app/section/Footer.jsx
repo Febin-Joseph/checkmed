@@ -56,17 +56,9 @@ const Footer = () => {
             <p>© 2024 Checkmed. All rights reserved</p>
             <div className="flex space-x-4">
               {[
-                {
-                  href: "https://x.com/checkmedindia?s=11",
-                  icon: <FaLinkedinIn />,
-                  label: "Twitter",
-                },
-                { href: "#", icon: <FaFacebookF />, label: "Facebook" },
-                {
-                  href: "https://www.linkedin.com/company/checkmed-private-limited/",
-                  icon: <FaTwitter />,
-                  label: "LinkedIn",
-                },
+                { href: "https://www.linkedin.com/company/checkmed-private-limited/", icon: <FaLinkedinIn />, label: "Twitter" },
+                { href: "https://www.facebook.com/checkmedapp/", icon: <FaFacebookF />, label: "Facebook" },
+                { href: "https://x.com/checkmedindia?s=11", icon: <FaTwitter />, label: "LinkedIn" },
               ].map(({ href, icon, label }) => (
                 <a
                   key={label}
