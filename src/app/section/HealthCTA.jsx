@@ -14,7 +14,7 @@ const HealthCTA = () => (
         With CheckMed, you can easily implement tailored wellness programs that drive real results, without needing 
         specialized skills or resources.
       </p>
-      <Button text="Start Improving Your Workplace Today" />
+      <Button text="START IMPROVING YOUR WORKPLACE TODAY" />
     </div>
   </div>
 );

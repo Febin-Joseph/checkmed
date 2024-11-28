@@ -1,97 +1,263 @@
+
 'use client';
-import { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, useCallback } from 'react';
 import Button from '../common/Button';
-import MenuItem from '../nav/MenuItem';
-import Dropdown from '../nav/DropDown';
 import Image from 'next/image';
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [showForm, setShowForm] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: '',
+    mobile: '',
+    email: '',
+    company: '',
+  });
 
   const toggleMenu = () => setIsOpen(!isOpen);
-  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
-  const dropdownItems = [
-    { href: '#resource1', label: 'Resource 1' },
-    { href: '#resource2', label: 'Resource 2' },
-    { href: '#resource3', label: 'Resource 3' },
-  ];
+  const openForm = () => {
+    setShowForm(true);
+  };
+
+  const closeForm = () => setShowForm(false);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch('/api/saveFormData', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        alert('Form data saved successfully!');
+        closeForm();
+
+        setFormData({
+          name: '',
+          mobile: '',
+          email: '',
+          company: '',
+        });
+      } else {
+        alert('Failed to save form data!');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred while saving the form data.');
+    }
+  };
+
+  const handleScroll = useCallback(() => {
+    const currentScrollY = window.scrollY;
+    const scrollThreshold = 100;
+  
+    if (currentScrollY === 0) {
+      setShowNavbar(true);
+    } else if (currentScrollY > lastScrollY && currentScrollY > scrollThreshold) {
+      setShowNavbar(false);
+    } else if (currentScrollY < lastScrollY) {
+      setShowNavbar(true);
+    }
+  
+    setLastScrollY(currentScrollY);
+  }, [lastScrollY]);
+  
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > lastScrollY && window.scrollY > 100) {
-        setShowNavbar(false);
-      } else {
-        setShowNavbar(true);
-      }
-      setLastScrollY(window.scrollY);
-    };
-
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [lastScrollY]);
+  }, [handleScroll]);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 
-        ${showNavbar ? 'translate-y-0' : '-translate-y-full'
-        } flex items-center justify-between p-1 bg-white border-gray-300 shadow-md border-b`}
-    >
-      <div className="flex items-center pl-4">
-        <Image
-          src="/checkmed.svg"
-          alt="CheckMed"
-          width={80}
-          height={80}
-          className="mr-[100px] w-[72px] h-[72px]"
-        />
-      </div>
+    <>
+      <div className="absolute top-0 left-0 right-0 h-[80px] bg-gray-100"></div>
+      <nav
+        className={`
+          fixed top-0 left-0 right-0 z-50 
+          transition-transform duration-500 ease-in-out 
+          ${showNavbar ? 'translate-y-0' : '-translate-y-full'}
+        `}
+      >
+        <div className="bg-white border-b border-gray-300 flex items-center justify-between p-1">
+          <div className="flex items-center pl-4">
+            <Image
+              src="/checkmed.svg"
+              alt="CheckMed"
+              width={80}
+              height={80}
+              className="mr-2 w-[72px] h-[72px]"
+            />
+          </div>
 
-      <div className="lg:hidden flex items-center">
-        <button onClick={toggleMenu} className="text-gray-700 hover:text-gray-900 pr-4">
-          {isOpen ? (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
+          <div className="lg:hidden flex items-center">
+            <button
+              onClick={toggleMenu}
+              className="text-gray-700 hover:text-gray-900 pr-4"
+            >
+              {isOpen ? (
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
+
+          <div className="hidden lg:block pr-6 mb-3">
+            <Button
+              text="GET A QUOTE"
+              onClick={() => {
+                console.log('GET A QUOTE clicked');
+                openForm();
+              }}
+            />
+          </div>
+        </div>
+
+        {isOpen && (
+          <div className="lg:hidden absolute top-[80px] left-0 w-full bg-white shadow-md z-10">
+            <div className="px-4 py-2">
+              <Button
+                text="GET A QUOTE"
+                onClick={() => {
+                  console.log('GET A QUOTE clicked (mobile)');
+                  openForm();
+                }}
+              />
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {showForm && (
+    <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-[100]">
+      <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+        <button
+          onClick={closeForm}
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
         </button>
-      </div>
-
-      <div className="hidden lg:flex text-lg mt-2 items-center space-x-2 pl-0 ml-[440px]">
-        <div className="group">
-          <MenuItem href="#about">About</MenuItem>
-        </div>
-        <div className="group">
-          <MenuItem href="#solutions">Solutions</MenuItem>
-        </div>
-        <Dropdown isOpen={isDropdownOpen} toggleDropdown={toggleDropdown} items={dropdownItems} />
-      </div>
-
-      <div className="hidden lg:block pr-6 mb-3">
-        <Button text="GET A QUOTE" />
-      </div>
-
-      {isOpen && (
-        <div className="lg:hidden absolute top-[80px] left-0 w-full bg-white shadow-md z-10">
-          <MenuItem href="#about">About</MenuItem>
-          <MenuItem href="#solutions">Solutions</MenuItem>
-          <Dropdown isOpen={isDropdownOpen} toggleDropdown={toggleDropdown} items={dropdownItems} />
-          <div className="px-4 py-2">
-            <Button text="Get a quote" />
+        <h2 className="text-2xl font-bold mb-6 text-center">Get a Quote</h2>
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Mobile Number
+            </label>
+            <input
+              type="tel"
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleChange}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500"
+              placeholder="Enter your mobile number"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Email ID
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Company Name
+            </label>
+            <input
+              type="text"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500"
+              placeholder="Enter your company name"
+              required
+            />
+          </div>
+          <div className="flex justify-between items-center space-x-4 mt-6">
+            <Button text="CLOSE" onClick={closeForm} />
+            <Button text="SUBMIT" onClick={() => alert('Form submitted!')} />
+          </div>
+        </form>
           </div>
         </div>
       )}
-    </nav>
+    </>
   );
 };
 

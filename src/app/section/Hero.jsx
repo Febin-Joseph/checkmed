@@ -30,7 +30,7 @@ const Hero = () => {
             your business forward.
           </p>
           <div className="mt-4 sm:mt-6 md:mt-8">
-            <Button text="Get Started Today!" />
+            <Button text="GET STARTED TODAY!" />
           </div>
         </div>
 
