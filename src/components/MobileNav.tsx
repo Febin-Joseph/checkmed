@@ -1,5 +1,7 @@
+import { useState } from "react";
 import logo from "../assets/logo.svg";
 import menu from "../assets/menu.svg";
+
 function MobileNav() {
     const [isOpen, setIsOpen] = useState(false);
 

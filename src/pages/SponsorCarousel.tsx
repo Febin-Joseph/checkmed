@@ -1,8 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-// Import Swiper styles using direct paths
-import 'swiper/swiper.css';
-import 'swiper/css/autoplay';
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import yes from "../assets/YESBANK.svg";
 import care from "../assets/icare.svg";
