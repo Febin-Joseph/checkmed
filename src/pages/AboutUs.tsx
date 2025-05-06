@@ -1,4 +1,3 @@
-import React from "react";
 import Triangle from "../assets/triangles2.svg";
 import whatsapp from "../assets/whatsapp.svg";
 import ytplay from "../assets/ytplay.svg";

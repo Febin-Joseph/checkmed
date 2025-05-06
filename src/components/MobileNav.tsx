@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import menu from "../assets/menu.svg";
 function MobileNav() {

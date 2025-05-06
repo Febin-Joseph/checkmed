@@ -1,8 +1,8 @@
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/autoplay";
+// Import Swiper styles using direct paths
+import 'swiper/swiper.css';
+import 'swiper/css/autoplay';
 
 import yes from "../assets/YESBANK.svg";
 import care from "../assets/icare.svg";

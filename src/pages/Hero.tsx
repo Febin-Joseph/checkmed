@@ -1,4 +1,3 @@
-import React from "react";
 import Triangle from "../assets/triangles.svg";
 import iphone from "../assets/iphone.svg";
 import GradientBackground from "../components/GradientBackground";

@@ -1,4 +1,3 @@
-import React from "react";
 import person from "../assets/person.svg";
 import batch from "../assets/batch.svg";
 import iso from "../assets/iso.svg";

@@ -1,4 +1,3 @@
-import React from "react";
 import performance from "../assets/perf.svg";
 import triangle from "../assets/triangles2.svg";
 
