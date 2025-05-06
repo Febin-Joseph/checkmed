@@ -1,4 +1,3 @@
-import React from "react";
 import "./App.css";
 import Navbar from "./pages/Navbar";
 import Hero from "./pages/Hero";
@@ -132,11 +131,12 @@ function App() {
         />
       </div>
 
-      <div id="hospital" className="flex items-center justify-center w-full sm:min-h-[100vh] md:min-h-[55vh] lg:min-h-[55vh] xl:min-h-[55vh] min-h-[100vh] lg:px-[10vh] lg:py-[7vh] md:p-[2vh] sm:p-[2vh] p-[2vh] bg-white  ">
+      <div id="hospital" className="flex items-center justify-center w-full sm:min-h-[100vh] md:min-h-[55vh] lg:min-h-[55vh] xl:min-h-[55vh] min-h-[100vh] lg:px-[10vh] lg:py-[7vh] md:p-[2vh] sm:p-[2vh] p-[2vh] bg-white">
         <Hospital
           sectionTitle="For Hospitals, Labs, & Pharmacies"
-          bgcolor="6FD0F1"
+          bgcolor="#6FD0F1"
           shadows={false}
+          text="black"
           LineColor="#6FD0F1"
           boxColor="white"
           challengeData={HospitalData}
@@ -149,14 +149,15 @@ function App() {
       <div id="Individuals" className="flex items-center justify-center w-full sm:min-h-[90vh] md:min-h-[65vh] lg:min-h-[45vh] min-h-[90vh]  lg:px-[10vh] lg:py-[10vh] lg:pb-[6vh] md:p-[3vh] sm:p-[3vh] p-[3vh]   ">
         <Hospital
           sectionTitle="For Individuals & Families"
+          bgcolor="white"
           boxColor="#3DBCAA"
-          shadows={true}
+          shadows={true} 
           text="white"
           LineColor="white"
           challengeData={IndiviadulaData}
           reverseLayout={true}
           title="We fix this with:"
-          content="Affordable affinity plans, a single QR for all OPD needs, and digitized benefit tracking. "
+          content="Affordable affinity plans, a single QR for all OPD needs, and digitized benefit tracking. "
         />
       </div>
       <div id="products" className="lg:min-h-[100vh] flex items-center justify-center">

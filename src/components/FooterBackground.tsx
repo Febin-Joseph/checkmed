@@ -1,5 +1,3 @@
-import React from 'react';
-
 function FooterBackground() {
   return (
     <div className="absolute inset-0 w-full h-full">

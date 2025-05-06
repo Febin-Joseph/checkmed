@@ -63,7 +63,7 @@ const Challenges: React.FC<Props> = ({
             <Bigbox boxColor="#BAE6F7" />
           </div>
           <div className={`lg:w-[60%] lg:min-h-[8vh] lg:h-[55vh] md:w-[60%] w-[55%] flex items-center absolute aspect-[4/4] lg:left-3/7 left-3/7 -translate-x-[5%] md:-translate-x-[0%] transform ${reverseLayout ? "scale-x-[-1] lg:-translate-x-[20%] -translate-x-[5%]" : ""}`}>
-            <Fixbox boxColor="white" LineColor="#6FD0F1" title={title} content={content} />
+            <Fixbox boxColor="white" LineColor="#6FD0F1" title={title} content={content} text="black" />
           </div>
           <div className="absolute w-full h-full flex items-center aspect-[4/4] lg:ml-[20%] md:ml-[10%] sm:ml-[10%] ml-[0%] z-20 ">
             <img src={boximg} alt="" className={`w-[23%] h-[23%] ${reverseLayout ? "scale-x-[-1]" : ""}`} />
