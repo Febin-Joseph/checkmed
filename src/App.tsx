@@ -134,7 +134,7 @@ function App() {
       <div id="hospital" className="flex items-center justify-center w-full sm:min-h-[100vh] md:min-h-[55vh] lg:min-h-[55vh] xl:min-h-[55vh] min-h-[100vh] lg:px-[10vh] lg:py-[7vh] md:p-[2vh] sm:p-[2vh] p-[2vh] bg-white">
         <Hospital
           sectionTitle="For Hospitals, Labs, & Pharmacies"
-          bgcolor="#6FD0F1"
+          bgcolor="6FD0F1"
           shadows={false}
           text="black"
           LineColor="#6FD0F1"
